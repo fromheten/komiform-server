@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  komiform-server:
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - "~/komiform-data:/tmp/komiform"
+  web-server:
+    image: nginx:alpine
+    restart: always
+    depends_on:
+      - komiform-server
+    volumes:
+      - './nginx/static:/usr/share/nginx/html/:ro'
+      - './nginx/etc/nginx:/etc/nginx:rw'
+      - './nginx/var/log/nginx:/var/log/nginx'
+    ports:
+      - "443:443"
+      - "80:80"
