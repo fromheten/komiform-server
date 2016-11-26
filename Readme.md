@@ -7,11 +7,13 @@
 
 ## Usage
 
-Komiform server is ran with Docker.
+The server is using Docker. Have it installed, and then run `$ make` in the root of this project.
 
-`$ docker run -p 3000:3000 -d -ti komiform`
+You can now hit the 2 endpoints: `GET http://localhost/form/:form-id` and `POST http://localhost/form` with a form in your body.
 
-You can now hit the 2 endpoints: `GET /form/:form-id` and `POST /form` with a form in your body.
+## Developing
+
+To develop, you need to have [Leiningen](http://leiningen.org/) and a [JVM](http://openjdk.java.net/).
 
 ## License
 
