@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Komiform - A Better way to do Dependencies
+    </title>
+    <style>
+     * {
+       font-family: Palatino, serif;
+       font-size: 12pt;
+     }
+     code, pre {
+       font-family: monospace;
+       background: #eee;
+       padding: 0.2em;
+       border-radius: 2px;
+
+     }
+    </style>
+  </head>
+  <body>
+    <div class="aligner">
+      <article itemprop="text">
+        <h1>
+          <a id="user-content-komiform" class="anchor" href="#komiform" aria-hidden="true">
+            #
+          </a>
+          Komiform
+        </h1>
+
+        <h2>
+          <a id="user-content-a-better-way-to-do-dependencies" class="anchor" href="#a-better-way-to-do-dependencies" aria-hidden="true">
+            #
+          </a>
+          A Better Way to do Dependencies</h2>
+
+        <p>
+          Komiform is a library for sharing code.
+        </p>
+
+        <p>
+          Until now the smallest unit of code being shared is "library". Komiform aims to change that, and make it so that the smallest unit of code to share is the function, or even a form.
+        </p>
+
+        <p>
+          It has 2 functions of intrest - <code>publish!</code> and <code>get-form</code>.
+        </p>
+
+        <ul>
+          <li>
+            <p>
+              <code>publish!</code> takes a Clojure form and uploads it, giving you a hash of the form back. The hash is the globally unique ID of your form. No 2 forms can ever have the same ID. That is why hashes are better than names, for identification.
+            </p>
+          </li>
+          <li>
+            <p>
+              <code>get-form</code> takes a hash and returns the form, evaluated. It keeps a local cache, so you only ever do one network request (much like Maven does in <code>~/.m2</code>).
+            </p>
+          </li>
+        </ul>
+
+        <h2>
+          <a id="user-content-tldr" class="anchor" href="#tldr" aria-hidden="true">
+            #
+          </a>
+          TL;DR
+        </h2>
+
+        <pre>
+(require 'komiform.core :refer [get-form publish!])
+(publish! '(fn add2 [n] (+ 2 n))) ;=&gt; "KTewcBHxQ8GFaNQ96IHfp72YtTM7BY90YccmiaGka94"
+(let [add2 @(komiform.core/get-form "KTewcBHxQ8GFaNQ96IHfp72YtTM7BY90YccmiaGka94")]
+(add2 5)) ;=&gt; 7
+        </pre>
+
+        <h2><a id="user-content-installation" class="anchor" href="#installation" aria-hidden="true">#</a>Installation</h2>
+
+        <p>In <code>project.clj</code> or <code>build.boot</code></p>
+
+        <pre>[komiform "1.0.0"]</pre>
+
+        <h2>
+          <a id="user-content-problems-you-no-longer-suffer" class="anchor" href="#problems-you-no-longer-suffer" aria-hidden="true">
+            #
+          </a>
+          Problems you no longer suffer
+        </h2>
+
+        <ul>
+          <li>Never again copy-paste code - not even when you are lazy</li>
+          <li>Semver</li>
+          <li>Having a bulky "shared" .jar for things different apps share</li>
+        </ul>
+
+        <a href="https://github.com/fromheten/komiform">
+          Github
+        </a>
+      </article>
+    </div>
+  </body>
+</html>
