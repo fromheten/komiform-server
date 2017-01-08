@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# --server https://acme-staging.api.letsencrypt.org/directory \
+
+docker run \
+       --rm \
+       --volumes-from letsencrypt-data \
+       --publish 443:443 \
+       --publish 80:80 \
+       quay.io/letsencrypt/letsencrypt certonly \
+       --domain www.komiform.top \
+       --authenticator standalone \
+       --email komiform-letsencrypt@martinjosefsson.com \
+       --agree-tos

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+docker run \
+       --detach \
+       --name my-cron \
+       --volume /var/run/docker.sock:/var/run/docker.sock \
+       --env affinity:container==letsencrypt-data \
+       my-cron

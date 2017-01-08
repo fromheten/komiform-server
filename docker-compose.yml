@@ -8,11 +8,20 @@ services:
       - "3000:3000"
     volumes:
       - "~/komiform-data:/tmp/komiform"
+  letsencrypt-data:
+    image: quay.io/letsencrypt/letsencrypt
+    container_name: letsencrypt-data
+    volumes:
+      - './letsencrypt/etc/letsencrypt:/etc/letsencrypt:rw'
+      - './letsencrypt/var/lib/letsencrypt:/var/lib/letsencrypt:rw'
+    entrypoint: /bin/mkdir -p /etc/letsencrypt/webrootauth
   web-server:
     image: nginx:alpine
     restart: always
     depends_on:
       - komiform-server
+    volumes_from:
+      - letsencrypt-data
     volumes:
       - './nginx/static:/usr/share/nginx/html/:ro'
       - './nginx/etc/nginx:/etc/nginx:rw'

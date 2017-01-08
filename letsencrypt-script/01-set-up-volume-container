@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Obsolete - now I have the letsencrypt-data entry in docker-compose.yml
+
+# docker run  --name letsencrypt-data --volume /etc/letsencrypt --volume /var/lib/letsencrypt --entrypoint /bin/mkdir quay.io/letsencrypt/letsencrypt -p /etc/letsencrypt/webrootauth/

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+docker build \
+       --tag my-cron \
+       --file Dockerfile.cron \
+       .
+
+
+# --volumes-from letsencrypt-data \
