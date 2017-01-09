@@ -1,0 +1,9 @@
+#!/bin/sh
+
+mkdir ./letsencrypt/etc/letsencrypt/
+docker run \
+       --rm \
+       --interactive \
+       --volumes-from letsencrypt-data \
+       nginx \
+       openssl dhparam -out /etc/letsencrypt/dhparams.pem 2048

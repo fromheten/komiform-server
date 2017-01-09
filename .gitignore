@@ -11,4 +11,5 @@ pom.xml.asc
 .hgignore
 .hg/
 .DS_Store
-./nginx/var/log/
+nginx/var/log
+letsencrypt

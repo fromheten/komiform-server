@@ -1,0 +1,21 @@
+#!/bin/sh
+
+date
+echo "Re-issuing Let's Encrypt TLS certificate";
+
+# --server https://acme-staging.api.letsencrypt.org/directory \
+
+# Re-issue the certificate
+docker run \
+       --rm \
+       --volumes-from letsencrypt-data \
+       quay.io/letsencrypt/letsencrypt certonly \
+       --domain www.komiform.top \
+       --authenticator webroot \
+       --webroot-path /etc/letsencrypt/webrootauth/ \
+       --email komiform-letsencrypt@martinjosefsson.com \
+       --renew-by-default \
+       --agree-tos
+
+# Send NGINX a SIGUP to trigger it to reload it's configuration without shutting down (Martin TODO research this behavious)
+docker kill --signal=HUP my-nginx
