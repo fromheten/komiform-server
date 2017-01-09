@@ -6,7 +6,7 @@
     </title>
     <style>
      * {
-       font-family: Palatino, serif;
+       font-family: Helvetica, Arial, sans-serif;
        font-size: 12pt;
      }
      code, pre {
@@ -14,7 +14,6 @@
        background: #eee;
        padding: 0.2em;
        border-radius: 2px;
-
      }
     </style>
   </head>
@@ -70,14 +69,25 @@
 (require 'komiform.core :refer [get-form publish!])
 (publish! '(fn add2 [n] (+ 2 n))) ;=&gt; "KTewcBHxQ8GFaNQ96IHfp72YtTM7BY90YccmiaGka94"
 (let [add2 @(komiform.core/get-form "KTewcBHxQ8GFaNQ96IHfp72YtTM7BY90YccmiaGka94")]
-(add2 5)) ;=&gt; 7
+&nbsp;&nbsp;(add2 5)) ;=&gt; 7
         </pre>
 
-        <h2><a id="user-content-installation" class="anchor" href="#installation" aria-hidden="true">#</a>Installation</h2>
+        <h2>
+          <a id="user-content-installation"
+             class="anchor"
+             href="#installation"
+             aria-hidden="true">
+            #
+          </a>
+          Installation
+        </h2>
 
         <p>In <code>project.clj</code> or <code>build.boot</code></p>
 
-        <pre>[komiform "1.0.0"]</pre>
+        <a href="https://clojars.org/komiform">
+          <img src="https://img.shields.io/clojars/v/komiform.svg"
+               alt="Clojars Project" />
+        </a>
 
         <h2>
           <a id="user-content-problems-you-no-longer-suffer" class="anchor" href="#problems-you-no-longer-suffer" aria-hidden="true">
